@@ -1,0 +1,422 @@
+:root{
+  --paper:#F2EADB;
+  --paper-deep:#E9DFC9;
+  --indigo:#1F2E4A;
+  --indigo-soft:#3A4A6B;
+  --brass:#B8912F;
+  --vermillion:#A83E32;
+  --ink:#2B2620;
+  --line-gray:#C9C0AC;
+  --white:#FBF8F1;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(184,145,47,0.06), transparent 40%),
+    var(--paper);
+  color:var(--ink);
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  min-height:100vh;
+  padding-bottom:60px;
+}
+.app{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px;
+}
+header{
+  padding:28px 0 18px;
+  border-bottom:3px double var(--indigo);
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+}
+header .stamp{
+  width:46px;height:46px;flex:0 0 auto;
+  border:2px solid var(--vermillion);
+  border-radius:50%;
+  color:var(--vermillion);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Shippori Mincho', serif;
+  font-weight:700;
+  font-size:12px;
+  transform:rotate(-8deg);
+  opacity:0.85;
+  line-height:1.1;
+  text-align:center;
+}
+h1{
+  font-family:'Shippori Mincho', serif;
+  font-weight:700;
+  font-size:26px;
+  margin:0;
+  letter-spacing:0.04em;
+  color:var(--indigo);
+}
+.sub{
+  font-size:11px;
+  letter-spacing:0.12em;
+  color:var(--indigo-soft);
+  margin-top:4px;
+}
+
+nav.tabs{
+  display:flex;
+  margin:22px 0 20px;
+  border:1px solid var(--indigo);
+  border-radius:4px;
+  overflow:hidden;
+}
+nav.tabs button{
+  flex:1;
+  padding:12px 4px;
+  background:var(--white);
+  border:none;
+  border-right:1px solid var(--indigo);
+  font-family:'Shippori Mincho', serif;
+  font-size:13px;
+  font-weight:700;
+  color:var(--indigo-soft);
+  cursor:pointer;
+  letter-spacing:0.02em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+nav.tabs button:last-child{border-right:none;}
+nav.tabs button.active{
+  background:var(--indigo);
+  color:var(--white);
+}
+
+section.panel{display:none;}
+section.panel.active{display:block;}
+
+.form-card{
+  background:var(--white);
+  border:1px solid var(--line-gray);
+  border-radius:6px;
+  padding:18px;
+  margin-bottom:24px;
+  box-shadow:0 1px 0 rgba(0,0,0,0.03);
+}
+.form-card h2{
+  font-family:'Shippori Mincho', serif;
+  font-size:15px;
+  margin:0 0 14px;
+  color:var(--indigo);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.form-card h2::before{
+  content:'';
+  width:8px;height:8px;
+  background:var(--brass);
+  display:inline-block;
+  transform:rotate(45deg);
+}
+.field-row{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:10px;
+}
+.field{width:100%;}
+.field label{
+  display:block;
+  font-size:11px;
+  color:var(--indigo-soft);
+  margin-bottom:4px;
+  letter-spacing:0.03em;
+}
+.field input, .field textarea, .field select{
+  width:100%;
+  padding:10px;
+  border:1px solid var(--line-gray);
+  border-radius:3px;
+  background:var(--paper);
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  font-size:16px;
+  color:var(--ink);
+  -webkit-appearance:none;
+  appearance:none;
+  line-height:1.4;
+}
+.field input[type="date"]{
+  min-height:42px;
+}
+.field textarea{resize:vertical;min-height:44px;}
+.field input:focus, .field textarea:focus, .field select:focus{
+  outline:2px solid var(--brass);
+  outline-offset:1px;
+}
+.submit-btn{
+  width:100%;
+  padding:11px;
+  background:var(--indigo);
+  color:var(--white);
+  border:none;
+  border-radius:3px;
+  font-family:'Shippori Mincho', serif;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:0.08em;
+  cursor:pointer;
+  margin-top:4px;
+}
+.submit-btn:active{background:var(--indigo-soft);}
+
+.list-title{
+  font-family:'Shippori Mincho', serif;
+  font-size:13px;
+  color:var(--indigo-soft);
+  margin:0 0 12px;
+  letter-spacing:0.1em;
+  display:flex;
+  justify-content:space-between;
+}
+
+/* ticket stub card */
+.ticket{
+  position:relative;
+  background:var(--white);
+  border:1px solid var(--indigo);
+  border-radius:4px;
+  margin-bottom:16px;
+  display:flex;
+  overflow:visible;
+}
+.ticket-main{
+  flex:1;
+  padding:14px 16px;
+  border-right:2px dashed var(--line-gray);
+  position:relative;
+}
+.ticket-stub{
+  width:56px;
+  flex:0 0 56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 4px;
+}
+.ticket-stub .date{
+  writing-mode:vertical-rl;
+  font-family:'Courier Prime', monospace;
+  font-size:12px;
+  color:var(--vermillion);
+  letter-spacing:0.05em;
+  font-weight:700;
+}
+/* perforation notches */
+.ticket::before, .ticket::after{
+  content:'';
+  position:absolute;
+  width:14px;height:14px;
+  background:var(--paper);
+  border-radius:50%;
+  right:52px;
+}
+.ticket::before{top:-8px;}
+.ticket::after{bottom:-8px;}
+
+.ticket-line{
+  font-family:'Courier Prime', monospace;
+  font-size:10px;
+  color:var(--brass);
+  letter-spacing:0.08em;
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+.ticket-title{
+  font-family:'Shippori Mincho', serif;
+  font-size:16px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:4px;
+}
+.ticket-meta{
+  font-size:12px;
+  color:var(--indigo-soft);
+  margin-bottom:6px;
+}
+.ticket-memo{
+  font-size:13px;
+  color:var(--ink);
+  line-height:1.5;
+  white-space:pre-wrap;
+}
+.del-btn{
+  position:absolute;
+  top:8px;right:16px;
+  background:none;
+  border:none;
+  color:var(--line-gray);
+  font-size:12px;
+  cursor:pointer;
+  padding:2px 6px;
+}
+.del-btn:hover{color:var(--vermillion);}
+
+/* trip note */
+.trip-card{
+  background:var(--white);
+  border:1px solid var(--line-gray);
+  border-left:4px solid var(--brass);
+  border-radius:4px;
+  padding:12px 14px;
+  margin-bottom:12px;
+  position:relative;
+}
+.trip-card.done{
+  border-left-color:var(--indigo-soft);
+  opacity:0.55;
+}
+.trip-card.done .trip-title{text-decoration:line-through;}
+.trip-top{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:nowrap;
+}
+.trip-title{
+  font-family:'Shippori Mincho', serif;
+  font-size:15px;
+  font-weight:700;
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.check{
+  width:20px;height:20px;flex:0 0 auto;
+  border:2px solid var(--indigo);
+  border-radius:3px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);
+  font-size:13px;
+  margin-top:1px;
+}
+.check.checked{background:var(--indigo);}
+.priority-tag{
+  font-size:10px;
+  padding:2px 7px;
+  border-radius:10px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  white-space:nowrap;
+}
+.priority-高{background:#F3DEDB;color:var(--vermillion);}
+.priority-中{background:#F0E7CE;color:var(--brass);}
+.priority-低{background:#E4E8EE;color:var(--indigo-soft);}
+.trip-memo{
+  font-size:13px;
+  color:var(--ink);
+  margin:8px 0 0 30px;
+  line-height:1.5;
+  white-space:pre-wrap;
+}
+
+.empty{
+  text-align:center;
+  padding:40px 20px;
+  color:var(--indigo-soft);
+  font-size:13px;
+  border:1px dashed var(--line-gray);
+  border-radius:6px;
+}
+.empty .big{
+  font-family:'Shippori Mincho', serif;
+  font-size:16px;
+  color:var(--indigo);
+  display:block;
+  margin-bottom:6px;
+}
+footer{
+  text-align:center;
+  font-size:11px;
+  color:var(--line-gray);
+  margin-top:30px;
+  letter-spacing:0.1em;
+}
+.footer-link{
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  font-size:12px;
+  color:var(--indigo-soft);
+  text-decoration:underline;
+  letter-spacing:0.05em;
+  cursor:pointer;
+}
+.menu-panel{
+  display:none;
+  background:var(--white);
+  border:1px solid var(--indigo);
+  border-radius:6px;
+  padding:12px;
+  margin:14px auto 0;
+  max-width:320px;
+  text-align:left;
+}
+.menu-panel.open{display:block;}
+.menu-item{
+  width:100%;
+  padding:10px;
+  background:var(--paper);
+  border:1px dashed var(--brass);
+  border-radius:4px;
+  font-family:'Zen Kaku Gothic New', sans-serif;
+  font-size:13px;
+  color:var(--indigo-soft);
+  cursor:pointer;
+  margin-bottom:8px;
+  text-align:center;
+}
+.menu-item:last-of-type{margin-bottom:0;}
+.menu-item:active{background:var(--paper-deep);}
+.backup-status{
+  font-size:11px;
+  color:var(--indigo-soft);
+  min-height:14px;
+  margin-top:8px;
+  text-align:center;
+  letter-spacing:0.02em;
+}
+
+/* ---- Responsive: tablet ---- */
+@media (min-width:700px){
+  .form-card{
+    max-width:640px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .field-row{
+    flex-direction:row;
+  }
+  .field{width:auto;flex:1;min-width:0;}
+  #v-list, #t-list{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:16px;
+    align-items:start;
+  }
+  .ticket, .trip-card{margin-bottom:0;}
+  .empty{grid-column:1 / -1;}
+  h1{font-size:30px;}
+}
+
+/* ---- Responsive: desktop ---- */
+@media (min-width:1024px){
+  header{padding-top:36px;}
+  h1{font-size:34px;}
+  .form-card{max-width:720px;padding:24px;}
+  #v-list, #t-list{
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+  nav.tabs{max-width:480px;margin-left:auto;margin-right:auto;}
+}
